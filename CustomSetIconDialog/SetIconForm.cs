@@ -199,23 +199,14 @@ namespace CustomSetIconDialog
             Assert.ArgumentNotNull(sender, nameof(sender));            
             Assert.ArgumentNotNull((object)e, nameof(e));
 
-            try
+            var setIconForm = new SetSearchedIcon
             {
-                System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
+                MapTagName = "Complete",
+                SearchValue = SearchText.Value,
+                CompleteList = CompleteList
+            };
 
-                var setIconForm = new SetSearchedIcon
-                {
-                    MapTagName = "Complete",
-                    SearchValue = SearchText.Value,
-                    CompleteList = CompleteList
-                };
-
-                setIconForm.RenderIcons();
-            }
-            finally
-            {
-                System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
-            }
+            setIconForm.RenderIcons();
             
             //SheerResponse.Eval("scUpdateControls();");
         }
